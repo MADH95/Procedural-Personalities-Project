@@ -36,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         
-        if ( !canJump )
+        if ( !canJump && isGrounded )
 		{
             jumpCooldownAccum += Time.deltaTime;
 
