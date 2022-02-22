@@ -3,9 +3,15 @@ namespace ProcGen
 {
 	public class Tuning : IConsideration
 	{
-		public Appraisal Evaluate ( ref State currentState )
+		public ConsiderationID ID { get => ConsiderationID.Tuning; }
+
+		public Appraisal Evaluate ( State currentState )
 		{
-			return new Appraisal();
+			return new Appraisal()
+			{
+				BaseUtility = 1f,
+				Multiplier = 1f
+			};
 		}
 	}
 }

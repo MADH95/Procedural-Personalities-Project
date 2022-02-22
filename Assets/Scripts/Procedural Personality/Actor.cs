@@ -26,7 +26,6 @@ namespace ProcGen
 			{
 				return new State()
 				{
-					WeatherConditions = WeatherState.Clear, //TODO: add function for current weather conditions
 					TimeOfDay = 12.0f,              //TODO: Implement rudamentory day cycle
 					Personality = personality,
 					Utilities = utilities,

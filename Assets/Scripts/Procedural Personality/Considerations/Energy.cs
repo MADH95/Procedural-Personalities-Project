@@ -11,46 +11,21 @@ namespace ProcGen
 		public Appraisal Evaluate ( State currentState )
 		{
 
-			switch ( currentState.AttemptingAction )
+			if ( currentState.AttemptingAction == ActionID.Eat ||
+				 currentState.AttemptingAction == ActionID.Relax ||
+				 currentState.AttemptingAction == ActionID.Sleep )
 			{
-				case ActionID.Eat:
+				return new Appraisal()
 				{
-					break;
-					//return Eat();
-				}
-
-				case ActionID.Leisure:
-				{
-					return Leisure( currentState );
-				}
-
-			
+					BaseUtility = 1f - currentState.Utilities.Energy,
+					Multiplier = 1f
+				};
 			}
-
-			return new Appraisal();
-		}
-
-		private Appraisal Leisure( State currentState )
-		{
-			// Statistically, people with the following traits are more likely to be active, while Neurotic people are less likely
-			// Link to paper - https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5650243/
-
-			List<float> traits = new List<float>()
-			{
-				currentState.Personality.Openness,
-				currentState.Personality.Exatraversion,
-				currentState.Personality.Agreeableness,
-				currentState.Personality.Conscientiousness
-			};
-
-			float divisor = currentState.Personality.Neuroticism;
-			if ( divisor < float.Epsilon )
-				divisor = float.Epsilon;
 
 			return new Appraisal()
 			{
-				BaseUtility = traits.Max() * currentState.Utilities.Energy / divisor,
-				Multiplier = currentState.ActionHistory.First.Value.ID == ActionID.Sleep ? 0f : 1f
+				BaseUtility = currentState.Utilities.Energy,
+				Multiplier = 1f
 			};
 		}
 	}

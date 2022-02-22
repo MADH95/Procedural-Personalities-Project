@@ -4,8 +4,6 @@ namespace ProcGen
 {
 	public struct State
 	{
-		public WeatherState WeatherConditions { get; set; }
-
 		public float TimeOfDay { get; set; }
 
 		public Personality Personality { get; set; }

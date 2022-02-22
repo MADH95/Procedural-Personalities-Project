@@ -3,9 +3,15 @@ namespace ProcGen
 {
 	public class TimeOfDay : IConsideration
 	{
-		public Appraisal Evaluate ( ref State currentState )
+		public ConsiderationID ID { get => ConsiderationID.TimeOfDay; }
+
+		public Appraisal Evaluate ( State currentState )
 		{
-			return new Appraisal();
+			return new Appraisal()
+			{
+				BaseUtility = currentState.TimeOfDay,
+				Multiplier = 1f
+			};
 		}
 	}
 }

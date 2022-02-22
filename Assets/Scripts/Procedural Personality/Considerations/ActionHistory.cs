@@ -8,9 +8,13 @@ namespace ProcGen
 
 		public Appraisal Evaluate ( State currentState )
 		{
+			float value = currentState.ActionHistory.ToList().FindIndex( elem => elem.ID == currentState.AttemptingAction );
+
+			value = value * 1f / currentState.ActionHistory.Count;
+
 			return new Appraisal()
 			{
-				BaseUtility = currentState.ActionHistory.ToList().FindIndex( elem => elem.ID == currentState.AttemptingAction ),
+				BaseUtility = value,
 				Multiplier	= 1f
 			};
 		}

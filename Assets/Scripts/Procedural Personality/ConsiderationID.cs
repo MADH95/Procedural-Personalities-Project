@@ -5,9 +5,10 @@ namespace ProcGen
 	{
 		ActionHistory,
 		Energy,
+		Hunger,
 		Lonliness,
 		Money,
-		PlayerOpinion,
+		Personal,
 		RandomNoise,
 		TimeOfDay,
 		Tuning,
