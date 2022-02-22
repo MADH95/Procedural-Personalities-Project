@@ -54,13 +54,15 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Procedural Personality\Tasks\Leisure.cs" />
-    <Compile Include="Assets\Scripts\Procedural Personality\ITask.cs" />
+    <Compile Include="Assets\Scripts\Procedural Personality\Task.cs" />
     <Compile Include="Assets\Scripts\Procedural Personality\Tasks\Sleep.cs" />
     <Compile Include="Assets\Scripts\Procedural Personality\Considerations\Hunger.cs" />
     <Compile Include="Assets\Scripts\Procedural Personality\Personality.cs" />
     <Compile Include="Assets\Scripts\Procedural Personality\Considerations\Lonliness.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Procedural Personality\Appraisal.cs" />
     <Compile Include="Assets\Scripts\Procedural Personality\Considerations\PlayerOpinion.cs" />
+    <Compile Include="Assets\Scripts\Player\MouseLook.cs" />
     <Compile Include="Assets\Scripts\Procedural Personality\Considerations\RandomNoise.cs" />
     <Compile Include="Assets\Scripts\Procedural Personality\Considerations\Tuning.cs" />
     <Compile Include="Assets\Scripts\Procedural Personality\State.cs" />
@@ -78,8 +80,8 @@
     <Compile Include="Assets\Scripts\Procedural Personality\Tasks\Shelter.cs" />
     <Compile Include="Assets\Scripts\Procedural Personality\Considerations\Money.cs" />
     <Compile Include="Assets\Scripts\Procedural Personality\Considerations\Weather.cs" />
-    <Compile Include="Assets\Scripts\Player\MouseLook.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Procedural Personality\ActionID.cs" />
+    <Compile Include="Assets\Scripts\Procedural Personality\ConsiderationID.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

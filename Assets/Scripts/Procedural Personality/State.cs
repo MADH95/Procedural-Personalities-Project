@@ -12,6 +12,8 @@ namespace ProcGen
 
 		public Utilities Utilities { get; set; }
 
-		public List<ITask> ActionHistory { get; set; }
+		public LinkedList<Task> ActionHistory { get; set; }
+
+		public ActionID AttemptingAction { get; set; }
 	}
 }

@@ -5,6 +5,8 @@ namespace ProcGen
 	{
 		//public DataNode Data { get; set; }
 
-		public Appraisal Evaluate ( ref State currentState );
+		public ConsiderationID ID { get; }
+
+		public Appraisal Evaluate ( State currentState );
 	}
 }

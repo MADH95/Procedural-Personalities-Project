@@ -1,3 +1,4 @@
+using UnityEngine;
 
 namespace ProcGen
 {
@@ -13,14 +14,23 @@ namespace ProcGen
 
 		public float Neuroticism { get; set; }
 
-		public Personality Generate ()
+		static public Personality Generate ()
 		{
-			return new Personality();
+			return new Personality()
+			{
+				Openness			= Random.Range( 0f, 1f ),
+				Conscientiousness	= Random.Range( 0f, 1f ),
+				Exatraversion		= Random.Range( 0f, 1f ),
+				Agreeableness		= Random.Range( 0f, 1f ),
+				Neuroticism			= Random.Range( 0f, 1f )
+			};
 		}
 
-		public Personality Generate ( int seed )
+		static public Personality Generate ( int seed )
 		{
-			return new Personality();
+			Random.InitState( seed );
+
+			return Generate();
 		}
 	}
 }

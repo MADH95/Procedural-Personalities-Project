@@ -1,23 +1,27 @@
+using System.Linq;
 using System.Collections.Generic;
 
 namespace ProcGen
 {
-	public class Relax : ITask
+	public class Relax : Task
 	{
-		public List<IConsideration> Considerations { get; set; }
-		public bool IsRunning { get; set; }
+		public override ActionID ID { get => ActionID.Relax; }
 
-		public void AddConsideration ( IConsideration consideration )
+		public override float CalculateUtility ( State currentState )
 		{
+			List<Appraisal> appraisals = new List<Appraisal>( Considerations.Count );
 
+			foreach ( var consideration in Considerations )
+			{
+				appraisals.Add( consideration.Evaluate( currentState ) );
+			}
+
+			float utility = appraisals.Aggregate( 0f, ( accum, elem ) => accum + elem.BaseUtility );
+
+			return appraisals.Aggregate( utility, ( accum, elem ) => accum * elem.Multiplier );
 		}
 
-		public float CalculateUtility ( ref State currentState )
-		{
-			return 0f;
-		}
-
-		public bool Perform ()
+		public override bool Perform ()
 		{
 			return false;
 		}

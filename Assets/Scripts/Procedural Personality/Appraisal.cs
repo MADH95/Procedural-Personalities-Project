@@ -3,8 +3,8 @@ namespace ProcGen
 {
 	public struct Appraisal
 	{
-		public int BaseUtility { get; set; }
+		public float BaseUtility { get; set; }
 
-		public int Multiplier { get; set; }
+		public float Multiplier { get; set; }
 	}
 }
