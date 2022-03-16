@@ -1,11 +1,14 @@
 
 # Change Log
 
+## 16/03/22
+- Reworked to be UI focussed
+
 ## 22/02/22
 - Began implementation of actor decision system
 
 ## 05/02/22
-- Finished adding physics to the doors in the town.
+- Finished adding physics to the doors in the town
 - Fleshed out the empty rooms in the town
 
 
