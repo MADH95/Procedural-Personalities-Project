@@ -1,16 +1,25 @@
 
+using UnityEngine;
 namespace ProcGen
 {
-	public class Money : IConsideration
+	[CreateAssetMenu( fileName = "Money", menuName = "ScriptableObject/Considerations/Money" )]
+	public class Money : Consideration
 	{
-		public ConsiderationID ID { get => ConsiderationID.Money; }
+		public override ConsiderationID ID { get => ConsiderationID.Money; }
 
-		public Appraisal Evaluate ( State currentState )
+		public bool Inverted;
+
+		public override Appraisal Evaluate ( State currentState )
 		{
+			float value = currentState.Utilities.Money;
+
+			if ( Inverted )
+				value = 1f - value;
+
 			return new Appraisal()
 			{
-				BaseUtility = 1 - currentState.Utilities.Money,
-				Multiplier = 1f
+				BaseUtility = 0f,
+				Multiplier = 1f + value,
 			};
 		}
 	}

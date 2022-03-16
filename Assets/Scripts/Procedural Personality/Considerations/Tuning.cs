@@ -1,15 +1,21 @@
 
+using UnityEngine;
+
 namespace ProcGen
 {
-	public class Tuning : IConsideration
+	[CreateAssetMenu( fileName = "Tuning", menuName = "ScriptableObject/Considerations/Tuning" )]
+	public class Tuning : Consideration
 	{
-		public ConsiderationID ID { get => ConsiderationID.Tuning; }
+		public override ConsiderationID ID { get => ConsiderationID.Tuning; }
 
-		public Appraisal Evaluate ( State currentState )
+		[Range(0f, 1f)]
+		public float tuningValue;
+
+		public override Appraisal Evaluate ( State currentState )
 		{
 			return new Appraisal()
 			{
-				BaseUtility = 1f,
+				BaseUtility = tuningValue,
 				Multiplier = 1f
 			};
 		}

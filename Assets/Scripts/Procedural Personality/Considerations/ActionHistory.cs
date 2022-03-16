@@ -1,21 +1,23 @@
-using System.Linq;
 
+using UnityEngine;
 namespace ProcGen
 {
-	public class ActionHistory : IConsideration
+	[CreateAssetMenu( fileName = "ActionHistory", menuName = "ScriptableObject/Considerations/ActionHistory" )]
+	public class ActionHistory : Consideration
 	{
-		public ConsiderationID ID { get => ConsiderationID.ActionHistory; }
+		public override ConsiderationID ID { get => ConsiderationID.ActionHistory; }
 
-		public Appraisal Evaluate ( State currentState )
+		public override Appraisal Evaluate ( State currentState )
 		{
-			float value = currentState.ActionHistory.ToList().FindIndex( elem => elem.ID == currentState.AttemptingAction );
+			float value = currentState.ActionHistory.FindIndex( elem => elem.ID == currentState.AttemptingAction );
 
-			value = value * 1f / currentState.ActionHistory.Count;
+			if ( value < 0 )
+				value = currentState.ActionHistory.Count;
 
 			return new Appraisal()
 			{
-				BaseUtility = value,
-				Multiplier	= 1f
+				BaseUtility = 0f,
+				Multiplier	= value / currentState.ActionHistory.Count,
 			};
 		}
 	}

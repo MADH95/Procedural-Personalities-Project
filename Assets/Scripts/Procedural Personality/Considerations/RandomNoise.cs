@@ -3,11 +3,12 @@ using UnityEngine;
 
 namespace ProcGen
 {
-	public class RandomNoise : IConsideration
+	[CreateAssetMenu( fileName = "RandomNoise", menuName = "ScriptableObject/Considerations/RandomNoise" )]
+	public class RandomNoise : Consideration
 	{
-		public ConsiderationID ID { get => ConsiderationID.RandomNoise; }
+		public override ConsiderationID ID { get => ConsiderationID.RandomNoise; }
 
-		public Appraisal Evaluate ( State currentState )
+		public override Appraisal Evaluate ( State currentState )
 		{
 			return new Appraisal()
 			{

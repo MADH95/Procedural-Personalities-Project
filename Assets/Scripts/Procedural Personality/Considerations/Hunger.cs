@@ -1,26 +1,27 @@
 
+using UnityEngine;
 namespace ProcGen
 {
-	public class Hunger : IConsideration
+	[CreateAssetMenu( fileName = "Hunger", menuName = "ScriptableObject/Considerations/Hunger" )]
+	public class Hunger : Consideration
 	{
-		public ConsiderationID ID { get => ConsiderationID.Hunger; }
+		public override ConsiderationID ID { get => ConsiderationID.Hunger; }
 
-		public Appraisal Evaluate ( State currentState )
+		public bool Inverted;
+
+		public override Appraisal Evaluate ( State currentState )
 		{
-			if ( currentState.AttemptingAction == ActionID.Sleep ||
-				 currentState.AttemptingAction == ActionID.Relax )
-			{
-				return new Appraisal()
-				{
-					BaseUtility = 1f - currentState.Utilities.Hunger,
-					Multiplier = 1f
-				};
-			}
+			float power = 3f;
+
+			float value = currentState.Utilities.Hunger;
+
+			if ( Inverted )
+				value = 1f - value;
 
 			return new Appraisal()
 			{
-				BaseUtility = currentState.Utilities.Hunger,
-				Multiplier = 1f
+				BaseUtility = 0.2f,
+				Multiplier = 1f + Mathf.Pow( value, power ),
 			};
 		}
 	}

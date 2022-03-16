@@ -6,19 +6,21 @@ namespace ProcGen
 {
 	public class Actor : MonoBehaviour
 	{
-		[SerializeField] //TODO: custom Editor for Utilities
-		private Utilities utilities;
+		public new string name;
 
-		[SerializeField] //TODO: custom Editor for Personality
-		private Personality personality;
+		public List<Task> actions;
 
-		[SerializeField]
-		private List<Task> actions;
+		public Utilities utilities;
 
-		private Task currentAction = new Relax();
-		
-		private LinkedList<Task> actionHistory;
-		private const int MAX_ACTIONS = 5;
+		public Personality personality;
+
+		[HideInInspector]
+		public List<Task> actionHistory = new List<Task>( MAX_ACTIONS );
+
+		[HideInInspector]
+		public Task currentAction;
+
+		private const int MAX_ACTIONS = 4;
 
 		private State CurrentState
 		{
@@ -26,7 +28,6 @@ namespace ProcGen
 			{
 				return new State()
 				{
-					TimeOfDay = 12.0f,              //TODO: Implement rudamentory day cycle
 					Personality = personality,
 					Utilities = utilities,
 					ActionHistory = actionHistory
@@ -36,36 +37,47 @@ namespace ProcGen
 
 		private void Start ()
 		{
-			// incase custom editor is too difficult
-			//personality = Personality.Generate();
+			int seed = ++CharacterManager.Seed;
+			personality = Personality.Generate( seed );
+			utilities.Generate( seed );
 		}
 
 		private void Update ()
 		{
-			currentAction.Perform();
+			State state = CurrentState;
 
-			if ( !currentAction.CanChange )
-				return;
+			if ( currentAction != null )
+			{
+				currentAction.Perform( ref utilities );
+
+				utilities.Clamp();
+
+				if ( !currentAction.CanChange )
+					return;
+			}
 
 			Dictionary<Task, float> utilVals = new Dictionary<Task, float>( actions.Count );
 
-			State state = CurrentState;
 
 			for ( int i = 0; i < actions.Count; ++i )
 			{
 				state.AttemptingAction = actions[ i ].ID;
 
 				utilVals.Add( actions[ i ], actions[ i ].CalculateUtility( state ) );
+
+				//Debug.Log( $"{ name }: { actions[ i ].ID } - { utilVals[ actions[ i ] ] }" );
 			}
 
 			currentAction = utilVals.OrderByDescending( entry => entry.Value ).First().Key;
 
-			actionHistory.AddFirst( currentAction );
+			actionHistory.Insert( 0, currentAction );
 
 			while ( actionHistory.Count > MAX_ACTIONS )
 			{
-				actionHistory.RemoveLast();
+				actionHistory.RemoveAt( actionHistory.Count - 1 );
 			}
+
+			currentAction.Initialise( ref utilities );
 		}
 	}
 }

@@ -1,31 +1,27 @@
-
-using System.Linq;
-using System.Collections.Generic;
-
+﻿
+using UnityEngine;
 namespace ProcGen
 {
-	public class Energy : IConsideration
+	[CreateAssetMenu( fileName = "Energy", menuName = "ScriptableObject/Considerations/Energy" )]
+	public class Energy : Consideration
 	{
-		public ConsiderationID ID { get => ConsiderationID.Energy; }
+		public override ConsiderationID ID { get => ConsiderationID.Energy; }
 
-		public Appraisal Evaluate ( State currentState )
+		public bool Inverted;
+
+		public override Appraisal Evaluate ( State currentState )
 		{
+			float mult = 15f, mid = 0.5f, e = Mathf.Epsilon;
 
-			if ( currentState.AttemptingAction == ActionID.Eat ||
-				 currentState.AttemptingAction == ActionID.Relax ||
-				 currentState.AttemptingAction == ActionID.Sleep )
-			{
-				return new Appraisal()
-				{
-					BaseUtility = 1f - currentState.Utilities.Energy,
-					Multiplier = 1f
-				};
-			}
+			float value = currentState.Utilities.Energy;
+
+			if ( Inverted )
+				value = 1f - value;
 
 			return new Appraisal()
 			{
-				BaseUtility = currentState.Utilities.Energy,
-				Multiplier = 1f
+				BaseUtility = 0.3f,
+				Multiplier = 1f + ( 1 / ( 1 + Mathf.Pow( e, mult * ( currentState.Utilities.Energy - mid ) ) ) ),
 			};
 		}
 	}

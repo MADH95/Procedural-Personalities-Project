@@ -53,15 +53,11 @@
     <UnityVersion>2020.3.25f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\Procedural Personality\Tasks\Leisure.cs" />
     <Compile Include="Assets\Scripts\Procedural Personality\Task.cs" />
     <Compile Include="Assets\Scripts\Procedural Personality\Tasks\Sleep.cs" />
     <Compile Include="Assets\Scripts\Procedural Personality\Considerations\Hunger.cs" />
     <Compile Include="Assets\Scripts\Procedural Personality\Personality.cs" />
-    <Compile Include="Assets\Scripts\Procedural Personality\Considerations\Lonliness.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Procedural Personality\Appraisal.cs" />
-    <Compile Include="Assets\Scripts\Player\MouseLook.cs" />
     <Compile Include="Assets\Scripts\Procedural Personality\Considerations\RandomNoise.cs" />
     <Compile Include="Assets\Scripts\Procedural Personality\Considerations\Tuning.cs" />
     <Compile Include="Assets\Scripts\Procedural Personality\State.cs" />
@@ -69,17 +65,41 @@
     <Compile Include="Assets\Scripts\Procedural Personality\Actor.cs" />
     <Compile Include="Assets\Scripts\Procedural Personality\ActionID.cs" />
     <Compile Include="Assets\Scripts\Procedural Personality\ConsiderationID.cs" />
-    <Compile Include="Assets\Scripts\Procedural Personality\Tasks\Relax.cs" />
-    <Compile Include="Assets\Scripts\Procedural Personality\Tasks\Mingle.cs" />
-    <Compile Include="Assets\Scripts\Procedural Personality\Considerations\Energy.cs" />
-    <Compile Include="Assets\Scripts\Procedural Personality\IConsideration.cs" />
+    <Compile Include="Assets\Scripts\Procedural Personality\Considerations\Personal.cs" />
+    <Compile Include="Assets\Scripts\Procedural Personality\Consideration.cs" />
     <Compile Include="Assets\Scripts\Procedural Personality\Tasks\Eat.cs" />
     <Compile Include="Assets\Scripts\Procedural Personality\Utilities.cs" />
     <Compile Include="Assets\Scripts\Procedural Personality\Tasks\Work.cs" />
-    <Compile Include="Assets\Scripts\Procedural Personality\Considerations\TimeOfDay.cs" />
-    <Compile Include="Assets\Scripts\Procedural Personality\Tasks\Shelter.cs" />
     <Compile Include="Assets\Scripts\Procedural Personality\Considerations\Money.cs" />
-    <Compile Include="Assets\Scripts\Procedural Personality\Considerations\Personal.cs" />
+    <Compile Include="Assets\Scripts\Game Managment\InformationScript.cs" />
+    <Compile Include="Assets\Scripts\Game Managment\InformationObject.cs" />
+    <Compile Include="Assets\Scripts\Game Managment\URLOpener.cs" />
+    <Compile Include="Assets\Scripts\Game Managment\ApplicationQuit.cs" />
+    <Compile Include="Assets\Scripts\CharacterManager.cs" />
+    <Compile Include="Assets\Scripts\Procedural Personality\Considerations\Energy.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+    <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+    <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+    <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

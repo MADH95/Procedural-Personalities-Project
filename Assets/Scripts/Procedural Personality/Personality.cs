@@ -4,15 +4,15 @@ namespace ProcGen
 {
 	public class Personality
 	{
-		public float Openness { get; set; }
+		public float Openness { get; private set; }
 
-		public float Conscientiousness { get; set; }
+		public float Conscientiousness { get; private set; }
 
-		public float Exatraversion { get; set; }
+		public float Exatraversion { get; private set; }
 
-		public float Agreeableness { get; set; }
+		public float Agreeableness { get; private set; }
 
-		public float Neuroticism { get; set; }
+		public float Neuroticism { get; private set; }
 
 		static public Personality Generate ()
 		{
@@ -28,9 +28,15 @@ namespace ProcGen
 
 		static public Personality Generate ( int seed )
 		{
+			var prevState = Random.state;
+
 			Random.InitState( seed );
 
-			return Generate();
+			Personality person = Generate();
+
+			Random.state = prevState;
+
+			return person;
 		}
 	}
 }

@@ -4,14 +4,11 @@ namespace ProcGen
 	public enum ConsiderationID
 	{
 		ActionHistory,
-		Energy,
 		Hunger,
-		Lonliness,
 		Money,
+		Energy,
 		Personal,
 		RandomNoise,
-		TimeOfDay,
 		Tuning,
-		Weather
 	}
 }

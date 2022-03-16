@@ -1,17 +1,19 @@
-using System.Collections.Generic;
+
 using System.Linq;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace ProcGen
 {
-	public abstract class Task
+	public abstract class Task : ScriptableObject
 	{
 		public abstract ActionID ID { get; }
 
-		public List<IConsideration> Considerations { get; set; }
+		public List<Consideration> Considerations;
 
-		public bool CanChange { get; set; }
+		public bool CanChange { get; set; } = true;
 
-		public float CalculateUtility ( State currentState )
+		public virtual float CalculateUtility ( State currentState )
 		{
 			List<Appraisal> appraisals = new List<Appraisal>( Considerations.Count );
 
@@ -25,6 +27,8 @@ namespace ProcGen
 			return appraisals.Aggregate( utility, ( accum, elem ) => accum * elem.Multiplier );
 		}
 
-		public abstract bool Perform();
+		public abstract void Initialise ( ref Utilities utilities );
+
+		public abstract bool Perform( ref Utilities utilities );
 	}
 }
