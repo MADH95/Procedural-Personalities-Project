@@ -1,6 +1,9 @@
 
 # Change Log
 
+## 28/0322
+- Tweaked character decision making to appear more realistic
+
 ## 16/03/22
 - Reworked to be UI focussed
 
